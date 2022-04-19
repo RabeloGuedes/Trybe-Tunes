@@ -1,35 +1,50 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
+import { getUser } from '../services/userAPI';
+import Loading from './Loading';
 
-class Header extends React.Component {
+export default class Header extends React.Component {
   constructor() {
     super();
     this.state = {
-      links: [
-        { name: 'Login', url: '/' },
-        { name: 'Busca', url: '/search' },
-        { name: 'Album', url: '/album/:id' },
-        { name: 'Favoritas', url: '/favorites' },
-        { name: 'Perfil', url: '/profile' },
-        { name: 'Editar Perfil', url: '/profile/edit' },
-      ],
+      userName: '',
+      loading: true,
     };
   }
 
+  async componentDidMount() {
+    const userInfos = await getUser();
+    this.userInfosRequest(userInfos.name);
+  }
+
+  async userInfosRequest(name) {
+    this.setState({
+      userName: name,
+      loading: false,
+    });
+  }
+
   render() {
-    const { links } = this.state;
+    const { loading, userName } = this.state;
     return (
-      <section>
-        <nav>
-          { links.map(({ name, url }) => (
-            <Link key={ name } to={ url }>
-              { name }
-            </Link>
-          ))}
-        </nav>
-      </section>
+      <header data-testid="header-component">
+        <section>
+          <nav>
+            <Link to="/search" data-testid="link-to-search" />
+            <Link to="/favorites" data-testid="link-to-favorites" />
+            <Link to="/profile" data-testid="link-to-profile" />
+          </nav>
+          {(loading) ? <Loading />
+            : (
+              <h3 data-testid="header-user-name">
+                Olá,
+                {' '}
+                { userName }
+                {' '}
+                !
+              </h3>)}
+        </section>
+      </header>
     );
   }
 }
-
-export default Header;

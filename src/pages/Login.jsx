@@ -45,7 +45,7 @@ class Login extends React.Component {
     const { loginInput, buttonState, isRequestDone, loading } = this.state;
     return (
       <div data-testid="page-login">
-        <form action="submit">
+        <form>
           <input
             type="text"
             data-testid="login-name-input"
