@@ -30,9 +30,9 @@ export default class Header extends React.Component {
       <header data-testid="header-component">
         <section>
           <nav>
-            <Link to="/search" data-testid="link-to-search" />
-            <Link to="/favorites" data-testid="link-to-favorites" />
-            <Link to="/profile" data-testid="link-to-profile" />
+            <Link to="/search" data-testid="link-to-search">Busca</Link>
+            <Link to="/favorites" data-testid="link-to-favorites">Favoritas</Link>
+            <Link to="/profile" data-testid="link-to-profile">Perfil</Link>
           </nav>
           {(loading) ? <Loading />
             : (
