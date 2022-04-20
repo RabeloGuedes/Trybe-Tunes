@@ -22,7 +22,6 @@ class Album extends React.Component {
   }
 
   async requestingSongs() {
-    // const { match: { params: { id } } } = this.props;
     const { match } = this.props;
     const { params } = match;
     const { id } = params;
@@ -55,15 +54,13 @@ class Album extends React.Component {
             <div>
               <h2 data-testid="artist-name">{ artistName }</h2>
               <h4 data-testid="album-name">{ albumName }</h4>
-              {songs.map(({ trackName,
-                previewUrl,
-                trackId,
-              }) => (
+              {songs.map((obj) => (
                 <MusicCard
-                  key={ trackId }
-                  name={ trackName }
-                  player={ previewUrl }
-                  id={ trackId }
+                  key={ obj.trackId }
+                  name={ obj.trackName }
+                  player={ obj.previewUrl }
+                  id={ obj.trackId }
+                  obj={ obj }
                 />
               ))}
             </div>
