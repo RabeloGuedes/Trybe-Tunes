@@ -13,27 +13,13 @@ export default class Content extends React.Component {
     return (
       <main>
         <Switch>
-          <Route exact path="/">
-            <Login />
-          </Route>
-          <Route path="/search">
-            <Search />
-          </Route>
-          <Route path="/album/:id">
-            <Album />
-          </Route>
-          <Route path="/favorites">
-            <Favorites />
-          </Route>
-          <Route path="/profile/edit">
-            <ProfileEdit />
-          </Route>
-          <Route path="/profile">
-            <Profile />
-          </Route>
-          <Route path="">
-            <NotFound />
-          </Route>
+          <Route exact path="/" component={ Login } />
+          <Route path="/search" component={ Search } />
+          <Route path="/album/:id" component={ Album } />
+          <Route path="/favorites" component={ Favorites } />
+          <Route path="/profile/edit" component={ ProfileEdit } />
+          <Route path="/profile" component={ Profile } />
+          <Route path="" component={ NotFound } />
         </Switch>
       </main>
     );

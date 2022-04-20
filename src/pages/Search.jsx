@@ -34,7 +34,6 @@ class Search extends React.Component {
   }
 
   async searchArtitsName() {
-    console.log('Olá');
     const { currentArtistName } = this.state;
     this.setState(({
       previousArtist: currentArtistName,
@@ -44,7 +43,6 @@ class Search extends React.Component {
         currentArtistName: '',
       });
       const collections = await searchAlbumsAPI(currentArtistName);
-      console.log(collections);
       this.setState({
         requestResult: collections,
         loading: false,
