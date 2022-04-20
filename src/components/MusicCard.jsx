@@ -1,28 +1,39 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import { addSong } from '../services/favoriteSongsAPI';
+import { addSong, getFavoriteSongs } from '../services/favoriteSongsAPI';
 import Loading from './Loading';
 
 export default class MusicCard extends React.Component {
   constructor() {
     super();
     this.state = {
-      requestingSong: false,
+      loading: false,
       checking: false,
     };
   }
 
-  async requestingFavoritesSongs(obj) {
-    // const { loading } = this.props;
-    this.setState({ requestingSong: true });
+  async componentDidMount() {
+    await this.requestingFavoriteSongs();
+  }
+
+  async settingFavoriteSongs(obj) {
+    this.setState({ loading: true });
     await addSong(obj);
-    this.setState({ requestingSong: false });
+    this.setState({ loading: false });
+  }
+
+  async requestingFavoriteSongs() {
+    const { id } = this.props;
+    const songs = await getFavoriteSongs();
+    const checkingForFavorite = songs.some(({ trackId }) => trackId === id);
+    this.setState({ checking: checkingForFavorite });
   }
 
   checking({ target: { checked } }) {
     if (checked) {
       this.setState({ checking: true });
       this.adding(checked);
+      this.requestingFavoriteSongs();
     } else {
       this.setState({ checking: false });
     }
@@ -31,15 +42,15 @@ export default class MusicCard extends React.Component {
   adding(target) {
     const { obj } = this.props;
     if (target) {
-      this.requestingFavoritesSongs(obj);
+      this.settingFavoriteSongs(obj);
     }
   }
 
   render() {
     const { name, player, id } = this.props;
-    const { checking, requestingSong } = this.state;
+    const { checking, loading } = this.state;
     return (
-      requestingSong ? <Loading />
+      loading ? <Loading />
         : (
           <div>
             <h4>
@@ -71,6 +82,6 @@ export default class MusicCard extends React.Component {
 MusicCard.propTypes = {
   name: PropTypes.string.isRequired,
   player: PropTypes.string.isRequired,
-  id: PropTypes.string.isRequired,
-  obj: PropTypes.arrayOf(PropTypes.object).isRequired,
+  id: PropTypes.number.isRequired,
+  obj: PropTypes.shape({}).isRequired,
 };

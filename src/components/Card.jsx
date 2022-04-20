@@ -23,7 +23,7 @@ export default class Card extends React.Component {
 }
 
 Card.propTypes = {
-  id: PropTypes.string.isRequired,
+  id: PropTypes.number.isRequired,
   img: PropTypes.string.isRequired,
   albumName: PropTypes.string.isRequired,
 };
