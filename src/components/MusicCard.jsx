@@ -36,6 +36,7 @@ export default class MusicCard extends React.Component {
   }
 
   checking({ target: { checked } }) {
+    const { favoriteListUpdate } = this.props;
     if (checked) {
       this.setState({ checking: true });
       this.adding(checked);
@@ -44,6 +45,7 @@ export default class MusicCard extends React.Component {
       this.setState({ checking: false });
       this.removing(checked);
     }
+    favoriteListUpdate();
   }
 
   adding(checked) {
@@ -81,6 +83,7 @@ export default class MusicCard extends React.Component {
               Favorita
               <input
                 name={ id }
+                id={ id }
                 type="checkbox"
                 data-testid={ `checkbox-music-${id}` }
                 onChange={ (e) => this.checking(e) }
@@ -98,4 +101,9 @@ MusicCard.propTypes = {
   player: PropTypes.string.isRequired,
   id: PropTypes.number.isRequired,
   obj: PropTypes.shape({}).isRequired,
+  favoriteListUpdate: PropTypes.func,
+};
+
+MusicCard.defaultProps = {
+  favoriteListUpdate: () => console.log(),
 };
