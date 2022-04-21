@@ -37,11 +37,7 @@ export default class Header extends React.Component {
           {(loading) ? <Loading />
             : (
               <h3 data-testid="header-user-name">
-                Olá,
-                {' '}
                 { userName }
-                {' '}
-                !
               </h3>)}
         </section>
       </header>

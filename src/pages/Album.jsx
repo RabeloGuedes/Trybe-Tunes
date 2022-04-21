@@ -76,6 +76,7 @@ Album.propTypes = {
       id: PropTypes.string.isRequired,
     }),
   }).isRequired,
+
 };
 
 export default Album;
