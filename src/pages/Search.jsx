@@ -61,27 +61,29 @@ class Search extends React.Component {
     return (
       <div data-testid="page-search">
         <form>
-          <input
-            type="text"
-            placeholder="Banda ou Artista"
-            data-testid="search-artist-input"
-            value={ currentArtistName }
-            onChange={ this.ArtistName }
-            onKeyPress={ (e) => {
-              if (e.key === 'Enter') {
-                e.preventDefault();
-                this.searchArtitsName();
-              }
-            } }
-          />
-          <button
-            type="button"
-            disabled={ buttonState }
-            data-testid="search-artist-button"
-            onClick={ this.searchArtitsName }
-          >
-            Pesquisar
-          </button>
+          <fieldset>
+            <legend>Banda ou Artista</legend>
+            <input
+              type="text"
+              data-testid="search-artist-input"
+              value={ currentArtistName }
+              onChange={ this.ArtistName }
+              onKeyPress={ (e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  this.searchArtitsName();
+                }
+              } }
+            />
+            <button
+              type="button"
+              disabled={ buttonState }
+              data-testid="search-artist-button"
+              onClick={ this.searchArtitsName }
+            >
+              Pesquisar
+            </button>
+          </fieldset>
           { loading ? <Loading />
             : (
               <Collections

@@ -27,14 +27,12 @@ class Profile extends React.Component {
     const { loading, userData } = this.state;
     const { description, name, email, image } = userData;
     return (loading ? (<Loading />) : (
-      <div data-testid="page-profile">
-        <h2>
-          Perfil
-        </h2>
+      <fieldset data-testid="page-profile">
+        <legend>Perfil</legend>
         <img src={ image } alt={ `Foto de ${name}` } data-testid="profile-image" />
         <Link to="/profile/edit"> Editar perfil</Link>
         <User name={ name } email={ email } description={ description } />
-      </div>)
+      </fieldset>)
     );
   }
 }

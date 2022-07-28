@@ -46,20 +46,29 @@ class Login extends React.Component {
     return (
       <div data-testid="page-login">
         <form>
-          <input
-            type="text"
-            data-testid="login-name-input"
-            onChange={ this.loginInputChange }
-            value={ loginInput }
-          />
-          <button
-            type="button"
-            data-testid="login-submit-button"
-            disabled={ buttonState }
-            onClick={ this.sendName }
-          >
-            Entrar
-          </button>
+          <fieldset>
+            <legend>Nome</legend>
+            <input
+              type="text"
+              data-testid="login-name-input"
+              onChange={ this.loginInputChange }
+              value={ loginInput }
+              onKeyPress={ (e) => {
+                if (e.key === 'Enter') {
+                  e.preventDefault();
+                  this.sendName();
+                }
+              } }
+            />
+            <button
+              type="button"
+              data-testid="login-submit-button"
+              disabled={ buttonState }
+              onClick={ this.sendName }
+            >
+              Entrar
+            </button>
+          </fieldset>
           {(loading) ? <Loading /> : ''}
           {(isRequestDone) ? <Redirect to="/search" /> : '' }
         </form>
