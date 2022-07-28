@@ -21,20 +21,24 @@ class ProfileEdit extends React.Component {
     this.setState({ loading: true });
     const userInfos = await getUser();
     const { name, email, description, image } = userInfos;
-    const checker = (
-      name.length === 0
-      || email.length === 0
-      || description.length === 0
-      || image.length === 0
-    );
-    this.setState({
-      name: userInfos.name,
-      email: userInfos.email,
-      description: userInfos.description,
-      image: userInfos.image,
-      loading: false,
-      buttonState: checker,
-    });
+    let checker = true;
+    if (userInfos.name !== undefined) {
+      checker = (
+        name.length === 0
+        || email.length === 0
+        || description.length === 0
+        || image.length === 0
+      );
+      this.setState({
+        name: userInfos.name,
+        email: userInfos.email,
+        description: userInfos.description,
+        image: userInfos.image,
+        loading: false,
+        buttonState: checker,
+      });
+    }
+    this.setState({ loading: false });
   }
 
   inputChange({ target }) {

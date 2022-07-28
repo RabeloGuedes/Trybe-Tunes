@@ -67,6 +67,12 @@ class Search extends React.Component {
             data-testid="search-artist-input"
             value={ currentArtistName }
             onChange={ this.ArtistName }
+            onKeyPress={ (e) => {
+              if (e.key === 'Enter') {
+                e.preventDefault();
+                this.searchArtitsName();
+              }
+            } }
           />
           <button
             type="button"
