@@ -1,0 +1,70 @@
+.album-container {
+  align-items: center;
+  background-color: var(--complementary-color-variant);
+  border: 3px solid var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0.5rem 0.5rem 0.4rem rgba(0, 0, 0, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 1rem auto;
+  width: 80%;
+}
+
+.album-container div {
+  align-items: center;
+  color: var(--tertiary-color);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  margin: 1rem auto;
+  padding: 1rem;
+  text-shadow: 0.1rem 0.1rem 0.4rem var(--complementary-color-variant);
+  width: 100%;
+}
+
+.album-container a {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0.3rem 0.3rem 0.5rem rgba(0, 0, 0, 0.5);
+  color: var(--tertiary-color);
+  font-size: 1.5rem;
+  font-weight: 500;
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+  text-decoration: none;
+  transition: all 0.3s ease-in-out;
+}
+
+.album-container a:hover {
+  background-color: var(--tertiary-color);
+  box-shadow: 0.5rem 0.7rem 0.5rem rgba(0, 0, 0, 0.5);
+  color: var(--primary-color);
+  transform: translateY(-5px);
+}
+
+.album-container div img {
+  max-width: 200px;
+  width: 35%;
+}
+
+.album-container div h5 {
+  font-size: 1.3rem;
+  margin-top: 1rem;
+  text-align: center;
+}
+
+@media screen and ( min-width : 768px ) {
+
+  .album-container {
+    min-height: 300px;
+    width: 30vw;
+  }
+}
+
+@media screen and ( min-width : 1024px ) {
+
+  .album-container {
+    width: 23%;
+  }
+}

@@ -68,7 +68,7 @@ export default class MusicCard extends React.Component {
     return (
       loading ? <Loading />
         : (
-          <div>
+          <div className="music-container">
             <h4>
               { name }
             </h4>

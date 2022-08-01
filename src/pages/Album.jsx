@@ -2,6 +2,7 @@ import React from 'react';
 import PropTypes from 'prop-types';
 import getMusics from '../services/musicsAPI';
 import MusicCard from '../components/MusicCard';
+import './Album.css';
 
 class Album extends React.Component {
   constructor() {
@@ -48,24 +49,26 @@ class Album extends React.Component {
       loading,
     } = this.state;
     return (
-      <div data-testid="page-album">
+      <section className="musics-container">
         {(loading)
           ? (
             <div>
-              <h2 data-testid="artist-name">{ artistName }</h2>
-              <h4 data-testid="album-name">{ albumName }</h4>
-              {songs.map((obj) => (
-                <MusicCard
-                  key={ obj.trackId }
-                  name={ obj.trackName }
-                  player={ obj.previewUrl }
-                  id={ obj.trackId }
-                  obj={ obj }
-                />
-              ))}
+              <h2 className="artist-name">{ artistName }</h2>
+              <h4 className="album-name">{ albumName }</h4>
+              <div className="songs-container">
+                {songs.map((obj) => (
+                  <MusicCard
+                    key={ obj.trackId }
+                    name={ obj.trackName }
+                    player={ obj.previewUrl }
+                    id={ obj.trackId }
+                    obj={ obj }
+                  />
+                ))}
+              </div>
             </div>
           ) : ''}
-      </div>
+      </section>
     );
   }
 }

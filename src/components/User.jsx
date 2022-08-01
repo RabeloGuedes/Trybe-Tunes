@@ -5,14 +5,20 @@ export default class User extends React.Component {
   render() {
     const { name, email, description } = this.props;
     return (
-      <div>
-        <h3>Nome</h3>
-        <p>{ name }</p>
-        <h3>Email</h3>
-        <p>{ email }</p>
-        <h3>Descrição</h3>
-        <p>{ description }</p>
-      </div>
+      <section className="user-infos-container">
+        <div>
+          <h3>Nome</h3>
+          <p>{ name }</p>
+        </div>
+        <div>
+          <h3>Email</h3>
+          <p>{ email }</p>
+        </div>
+        <div>
+          <h3>Descrição</h3>
+          <p>{ description }</p>
+        </div>
+      </section>
     );
   }
 }

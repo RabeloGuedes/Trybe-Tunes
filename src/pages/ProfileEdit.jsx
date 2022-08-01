@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { getUser, updateUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import './ProfileEdit.css';
 
 class ProfileEdit extends React.Component {
   constructor() {
@@ -34,7 +35,6 @@ class ProfileEdit extends React.Component {
         email: userInfos.email,
         description: userInfos.description,
         image: userInfos.image,
-        loading: false,
         buttonState: checker,
       });
     }
@@ -85,74 +85,69 @@ class ProfileEdit extends React.Component {
       redirecting,
     } = this.state;
     return (loading ? (<Loading />) : (
-      <div data-testid="page-profile-edit">
+      <section className="profile-edit-container">
         <h2>
           Editar Perfil
         </h2>
         <form>
-          <div>
-            <label htmlFor={ name }>
-              Nome:
-              <input
-                name="name"
-                id={ name }
-                type="text"
-                value={ name }
-                onChange={ (e) => this.inputChange(e) }
-                data-testid="edit-input-name"
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor={ email }>
-              Email:
-              <input
-                name="email"
-                id={ email }
-                type="email"
-                value={ email }
-                onChange={ (e) => this.inputChange(e) }
-                data-testid="edit-input-email"
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor={ description }>
-              Descrição:
-              <textarea
-                name="description"
-                id={ description }
-                type="text"
-                value={ description }
-                onChange={ (e) => this.inputChange(e) }
-                data-testid="edit-input-description"
-              />
-            </label>
-          </div>
-          <div>
-            <label htmlFor={ image }>
-              Imagem:
-              <input
-                name="image"
-                id={ image }
-                type="text"
-                value={ image }
-                onChange={ (e) => this.inputChange(e) }
-                data-testid="edit-input-image"
-              />
-            </label>
-          </div>
+          <fieldset>
+            <legend>Nome</legend>
+            <input
+              name="name"
+              id={ name }
+              type="text"
+              value={ name }
+              onChange={ (e) => this.inputChange(e) }
+              data-testid="edit-input-name"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Email</legend>
+            <input
+              name="email"
+              id={ email }
+              type="email"
+              value={ email }
+              onChange={ (e) => this.inputChange(e) }
+              data-testid="edit-input-email"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Descrição</legend>
+            <textarea
+              name="description"
+              id={ description }
+              type="text"
+              value={ description }
+              onChange={ (e) => this.inputChange(e) }
+              columns="30"
+              rows="10"
+            />
+          </fieldset>
+          <fieldset>
+            <legend>Imagem</legend>
+            <input
+              name="image"
+              id={ image }
+              type="text"
+              value={ image }
+              onChange={ (e) => this.inputChange(e) }
+              data-testid="edit-input-image"
+            />
+          </fieldset>
           <button
             type="button"
             disabled={ buttonState }
             data-testid="edit-button-save"
             onClick={ () => this.salvingUserInfos() }
+            style={ { backgroundColor: (buttonState
+              ? 'var(--primary-color-variant)' : 'var(--primary-color)') } }
           >
             Salvar
           </button>
         </form>
         {redirecting && <Redirect to="/profile" />}
-      </div>)
+      </section>)
     );
   }
 }

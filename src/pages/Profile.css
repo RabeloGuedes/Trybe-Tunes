@@ -1,0 +1,87 @@
+.profile-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 90vw;
+}
+
+.profile-container fieldset {
+  align-items: center;
+  background-color: var(--complementary-color);
+  border: 3px solid var(--secondary-color);
+  border-radius: 5px;
+  box-shadow: 0.5rem 0.5rem 0.5rem rgba(0, 0, 0, 0.267);
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  font-weight: 500;
+  height: 60vh;
+  margin: 40px auto 0;
+  max-width: 450px;
+  padding: 10px;
+  position: absolute;
+  top: calc(50% - 30vh);
+  width: 80vw;
+  z-index: -1;
+}
+
+
+.profile-container fieldset legend {
+  font-size: 1.5rem;
+}
+
+.profile-container fieldset img {
+  border-radius: 50%;
+  height: 30%;
+  max-width: 10rem;
+}
+
+.profile-container fieldset a {
+  background-color: var(--primary-color);
+  border-radius: 5px;
+  box-shadow: 0.2rem 0.2rem 0.5rem 0 rgba(0, 0, 0, 0.5);
+  color: var(--tertiary-color);
+  margin-top: 1.5rem;
+  padding: 0.5rem;
+  text-decoration: none;
+  transition: all 0.5s;
+}
+
+.profile-container fieldset a:hover {
+  background-color: var(--tertiary-color);
+  box-shadow: 0.4rem 0.7rem 0.7rem 0 rgba(0, 0, 0, 0.5);
+  color: var(--primary-color);
+  transform: translateY(-0.3rem);
+}
+
+.user-infos-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  height: 70%;
+  justify-content: space-between;
+  margin: 0 auto;
+  padding: 2rem 0;
+  width: 100%;
+}
+
+.user-infos-container div {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin: 0 auto;
+  width: 100%;
+}
+
+.user-infos-container div h3 {
+  margin-bottom: 0.5rem;
+  text-shadow: 0 0 0.1rem var(--primary-color-variant);
+}
+
+.user-infos-container div p {
+  color: var(--tertiary-color);
+  text-shadow: 0.1rem 0.1rem 0.5rem var(--complementary-color-variant);
+}

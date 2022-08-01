@@ -2,6 +2,7 @@ import React from 'react';
 import { Redirect } from 'react-router-dom';
 import { createUser } from '../services/userAPI';
 import Loading from '../components/Loading';
+import './Login.css';
 
 class Login extends React.Component {
   constructor() {
@@ -44,7 +45,7 @@ class Login extends React.Component {
   render() {
     const { loginInput, buttonState, isRequestDone, loading } = this.state;
     return (
-      <div data-testid="page-login">
+      <setion className="login-container">
         <form>
           <fieldset>
             <legend>Nome</legend>
@@ -65,6 +66,10 @@ class Login extends React.Component {
               data-testid="login-submit-button"
               disabled={ buttonState }
               onClick={ this.sendName }
+              style={ {
+                backgroundColor: (buttonState
+                  ? 'var(--primary-color-variant)' : 'var(--primary-color)'),
+              } }
             >
               Entrar
             </button>
@@ -72,7 +77,7 @@ class Login extends React.Component {
           {(loading) ? <Loading /> : ''}
           {(isRequestDone) ? <Redirect to="/search" /> : '' }
         </form>
-      </div>
+      </setion>
     );
   }
 }

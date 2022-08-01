@@ -31,29 +31,16 @@ class Favorites extends React.Component {
     this.setState({ favoriteSongs: newSongs });
   }
 
-  // async requestingFavoriteSongs() {
-  //   this.setState({
-  //     loading: true,
-  //     anyFavoriteSong: false,
-  //   });
-  //   const songs = await getFavoriteSongs();
-  //   this.setState({
-  //     favoriteSongs: songs,
-  //     loading: false,
-  //     anyFavoriteSong: true,
-  //   });
-  // }
-
   render() {
     const { favoriteSongs, loading, anyFavoriteSong } = this.state;
     return (
-      <div data-testid="page-favorites">
+      <div className="favorites-container">
         {
           loading ? (
             <Loading />
           ) : (anyFavoriteSong
             && (
-              <section>
+              <section className="favorites-container">
                 <h2>
                   Favoritas
                 </h2>

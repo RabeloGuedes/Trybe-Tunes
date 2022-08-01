@@ -1,12 +1,13 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import PropTypes from 'prop-types';
+import './Card.css';
 
 export default class Card extends React.Component {
   render() {
     const { id, img, albumName } = this.props;
     return (
-      <section>
+      <section className="album-container">
         <div>
           <img src={ img } alt={ albumName } />
           <h5>{ albumName }</h5>

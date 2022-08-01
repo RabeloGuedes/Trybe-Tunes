@@ -1,0 +1,39 @@
+.no-albuns-title {
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  margin: 1rem auto;
+  text-align: center;
+  text-shadow: 0.1rem 0.1rem 0.4rem var(--primary-color-variant);
+}
+
+.albuns-search-result {
+  align-items: center;
+  color: var(--primary-color);
+  display: flex;
+  flex-direction: column;
+  font-size: 1.5rem;
+  height: 3rem;
+  justify-content: space-between;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.albuns-container {
+  align-items: center;
+  display: flex;
+  flex-direction: column;
+  margin: 1rem auto;
+  width: 100%;
+}
+
+.album-container {
+  height: 350px;
+}
+
+@media screen and ( min-width : 768px ) {
+
+  .albuns-container {
+    flex-flow: row wrap;
+    justify-content: space-around;
+  }
+}

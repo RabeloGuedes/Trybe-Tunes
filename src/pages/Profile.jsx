@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { getUser } from '../services/userAPI';
 import Loading from '../components/Loading';
 import User from '../components/User';
+import './Profile.css';
 
 class Profile extends React.Component {
   constructor() {
@@ -27,12 +28,14 @@ class Profile extends React.Component {
     const { loading, userData } = this.state;
     const { description, name, email, image } = userData;
     return (loading ? (<Loading />) : (
-      <fieldset data-testid="page-profile">
-        <legend>Perfil</legend>
-        <img src={ image } alt={ `Foto de ${name}` } data-testid="profile-image" />
-        <Link to="/profile/edit"> Editar perfil</Link>
-        <User name={ name } email={ email } description={ description } />
-      </fieldset>)
+      <section className="profile-container">
+        <fieldset>
+          <legend>Perfil</legend>
+          <img src={ image } alt={ `Foto de ${name}` } data-testid="profile-image" />
+          <Link to="/profile/edit"> Editar perfil</Link>
+          <User name={ name } email={ email } description={ description } />
+        </fieldset>
+      </section>)
     );
   }
 }

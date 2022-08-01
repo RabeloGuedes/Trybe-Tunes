@@ -2,6 +2,7 @@ import React from 'react';
 import searchAlbumsAPI from '../services/searchAlbumsAPI';
 import Loading from '../components/Loading';
 import Collections from '../components/Collections';
+import './Search.css';
 
 class Search extends React.Component {
   constructor() {
@@ -59,7 +60,7 @@ class Search extends React.Component {
       previousArtist,
     } = this.state;
     return (
-      <div data-testid="page-search">
+      <section className="search-container">
         <form>
           <fieldset>
             <legend>Banda ou Artista</legend>
@@ -91,7 +92,7 @@ class Search extends React.Component {
                 previousArtist={ previousArtist }
               />)}
         </form>
-      </div>
+      </section>
     );
   }
 }
